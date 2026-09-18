@@ -1,0 +1,31 @@
+<h1>本の新規登録</h1>
+
+<% if @book.errors.any? %>
+  <div style="color: red;">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @book do |f| %>
+  <div>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :author, "著者" %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div>
+    <%= f.label :price, "価格" %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div>
+    <%= f.submit "登録する" %>
+  </div>
+<% end %>
+
+<%= link_to "一覧に戻る", books_path %>

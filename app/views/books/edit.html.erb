@@ -1,0 +1,22 @@
+<h1>本の編集</h1>
+
+<%= form_with model: @book do |f| %>
+  <div>
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :author, "著者" %><br>
+    <%= f.text_field :author %>
+  </div>
+  <div>
+    <%= f.label :price, "価格" %><br>
+    <%= f.number_field :price %>
+  </div>
+  <div>
+    <%= f.submit "更新する" %>
+  </div>
+<% end %>
+
+<%= link_to "詳細に戻る", book_path(@book) %> |
+<%= link_to "一覧に戻る", books_path %>
