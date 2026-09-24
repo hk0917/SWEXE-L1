@@ -1,14 +1,16 @@
 <h1>本の一覧</h1>
 
-<%= link_to "新規登録", new_book_path %>
+<div style="margin-bottom: 15px;">
+  <%= link_to "＋ 新規登録", new_book_path, class: "btn" %>
+</div>
 
-<table border="1">
+<table>
   <thead>
     <tr>
       <th>タイトル</th>
       <th>著者</th>
       <th>価格</th>
-      <th colspan="3">操作</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
@@ -16,10 +18,12 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
-        <td><%= book.price %>円</td>
-        <td><%= link_to "詳細", book_path(book) %></td>
-        <td><%= link_to "編集", edit_book_path(book) %></td>
-        <td><%= link_to "削除", book_path(book), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %></td>
+        <td><%= number_with_delimiter(book.price) %> 円</td>
+        <td>
+          <%= link_to "詳細", book_path(book), class: "btn btn-secondary" %>
+          <%= link_to "編集", edit_book_path(book), class: "btn btn-secondary" %>
+          <%= link_to "削除", book_path(book), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

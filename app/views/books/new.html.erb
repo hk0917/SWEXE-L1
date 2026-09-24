@@ -1,7 +1,8 @@
 <h1>本の新規登録</h1>
 
 <% if @book.errors.any? %>
-  <div style="color: red;">
+  <div class="error-explanation">
+    <strong>入力内容にエラーがあります：</strong>
     <ul>
       <% @book.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,21 +12,23 @@
 <% end %>
 
 <%= form_with model: @book do |f| %>
-  <div>
-    <%= f.label :title, "タイトル" %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  <div>
-    <%= f.label :author, "著者" %><br>
-    <%= f.text_field :author %>
+
+  <div class="form-group">
+    <%= f.label :author, "著者" %>
+    <%= f.text_field :author, class: "form-control" %>
   </div>
-  <div>
-    <%= f.label :price, "価格" %><br>
-    <%= f.number_field :price %>
+
+  <div class="form-group">
+    <%= f.label :price, "価格" %>
+    <%= f.number_field :price, class: "form-control" %>
   </div>
-  <div>
-    <%= f.submit "登録する" %>
+
+  <div style="margin-top: 20px;">
+    <%= f.submit "登録する", class: "btn" %>
+    <%= link_to "一覧に戻る", books_path, class: "btn btn-secondary" %>
   </div>
 <% end %>
-
-<%= link_to "一覧に戻る", books_path %>
