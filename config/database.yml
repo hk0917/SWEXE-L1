@@ -18,3 +18,13 @@ production:
     username: mysite
     password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
     url: <%= ENV['DATABASE_URL'] %>
+
+  # 追加：solid_cable 用の設定（メインDBと同じ接続を使用）
+  cable:
+    <<: *primary_production
+
+  # 追加：solid_queue や solid_cache もエラーにならないよう追加
+  cache:
+    <<: *primary_production
+  queue:
+    <<: *primary_production
